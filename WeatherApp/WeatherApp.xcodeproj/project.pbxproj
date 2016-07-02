@@ -12,8 +12,26 @@
 		AAC1BDF61D27D2D2001D51BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAC1BDF41D27D2D2001D51BB /* Main.storyboard */; };
 		AAC1BDF81D27D2D2001D51BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAC1BDF71D27D2D2001D51BB /* Assets.xcassets */; };
 		AAC1BDFB1D27D2D2001D51BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAC1BDF91D27D2D2001D51BB /* LaunchScreen.storyboard */; };
-		AAC1BE061D27D2D3001D51BB /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE051D27D2D3001D51BB /* WeatherAppTests.swift */; };
 		AAC1BE111D27D2D3001D51BB /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE101D27D2D3001D51BB /* WeatherAppUITests.swift */; };
+		AAC1BE261D27D49F001D51BB /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE251D27D49F001D51BB /* HTTPClient.swift */; };
+		AAC1BE2A1D27D856001D51BB /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE291D27D856001D51BB /* URLSession.swift */; };
+		AAC1BE2E1D27D9CC001D51BB /* NSURLSession+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE2D1D27D9CC001D51BB /* NSURLSession+URLSession.swift */; };
+		AAC1BE311D27DABD001D51BB /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE301D27DABD001D51BB /* HTTPClientTests.swift */; };
+		AAC1BE331D27DD9D001D51BB /* URLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE321D27DD9D001D51BB /* URLSessionDataTask.swift */; };
+		AAC1BE351D27DDC7001D51BB /* NSURLSessionDataTask+SessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE341D27DDC7001D51BB /* NSURLSessionDataTask+SessionDataTask.swift */; };
+		AAC1BE371D27E393001D51BB /* String+NSUTF8StringEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE361D27E393001D51BB /* String+NSUTF8StringEncoding.swift */; };
+		AAC1BE391D27E7A8001D51BB /* NSHTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE381D27E7A8001D51BB /* NSHTTPURLResponse+StatusCode.swift */; };
+		AAC1BE3B1D27EC5C001D51BB /* SeededDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE3A1D27EC5C001D51BB /* SeededDataTask.swift */; };
+		AAC1BE3D1D27EC9F001D51BB /* SeededURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE3C1D27EC9F001D51BB /* SeededURLSession.swift */; };
+		AAC1BE3F1D27EECE001D51BB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE3E1D27EECE001D51BB /* Config.swift */; };
+		AAC1BE411D27F2F4001D51BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE401D27F2F4001D51BB /* Constants.swift */; };
+		AAC1BE431D27F5F1001D51BB /* BayswaterExample.json in Resources */ = {isa = PBXBuildFile; fileRef = AAC1BE421D27F5F1001D51BB /* BayswaterExample.json */; };
+		AAC1BE451D27F698001D51BB /* UITestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE441D27F698001D51BB /* UITestHelper.swift */; };
+		AAC1BE481D27F8BB001D51BB /* EndpointUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE471D27F8BB001D51BB /* EndpointUtil.swift */; };
+		AAC1BE491D280129001D51BB /* EndpointUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE471D27F8BB001D51BB /* EndpointUtil.swift */; };
+		AAC1BE4A1D280136001D51BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE401D27F2F4001D51BB /* Constants.swift */; };
+		AAC1BE4D1D2802B7001D51BB /* EndpointUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE4C1D2802B7001D51BB /* EndpointUtilTests.swift */; };
+		AAC1BE501D280301001D51BB /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE4F1D280301001D51BB /* ConfigTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,11 +60,27 @@
 		AAC1BDFA1D27D2D2001D51BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAC1BDFC1D27D2D2001D51BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAC1BE011D27D2D3001D51BB /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAC1BE051D27D2D3001D51BB /* WeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppTests.swift; sourceTree = "<group>"; };
 		AAC1BE071D27D2D3001D51BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAC1BE0C1D27D2D3001D51BB /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC1BE101D27D2D3001D51BB /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		AAC1BE121D27D2D3001D51BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAC1BE251D27D49F001D51BB /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		AAC1BE291D27D856001D51BB /* URLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		AAC1BE2D1D27D9CC001D51BB /* NSURLSession+URLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLSession+URLSession.swift"; sourceTree = "<group>"; };
+		AAC1BE301D27DABD001D51BB /* HTTPClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
+		AAC1BE321D27DD9D001D51BB /* URLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTask.swift; sourceTree = "<group>"; };
+		AAC1BE341D27DDC7001D51BB /* NSURLSessionDataTask+SessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLSessionDataTask+SessionDataTask.swift"; sourceTree = "<group>"; };
+		AAC1BE361D27E393001D51BB /* String+NSUTF8StringEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+NSUTF8StringEncoding.swift"; sourceTree = "<group>"; };
+		AAC1BE381D27E7A8001D51BB /* NSHTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSHTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
+		AAC1BE3A1D27EC5C001D51BB /* SeededDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededDataTask.swift; sourceTree = "<group>"; };
+		AAC1BE3C1D27EC9F001D51BB /* SeededURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededURLSession.swift; sourceTree = "<group>"; };
+		AAC1BE3E1D27EECE001D51BB /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		AAC1BE401D27F2F4001D51BB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AAC1BE421D27F5F1001D51BB /* BayswaterExample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BayswaterExample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+		AAC1BE441D27F698001D51BB /* UITestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestHelper.swift; sourceTree = "<group>"; };
+		AAC1BE471D27F8BB001D51BB /* EndpointUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointUtil.swift; sourceTree = "<group>"; };
+		AAC1BE4C1D2802B7001D51BB /* EndpointUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointUtilTests.swift; sourceTree = "<group>"; };
+		AAC1BE4F1D280301001D51BB /* ConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +131,19 @@
 		AAC1BDEF1D27D2D2001D51BB /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				AAC1BDF01D27D2D2001D51BB /* AppDelegate.swift */,
-				AAC1BDF21D27D2D2001D51BB /* ViewController.swift */,
-				AAC1BDF41D27D2D2001D51BB /* Main.storyboard */,
 				AAC1BDF71D27D2D2001D51BB /* Assets.xcassets */,
-				AAC1BDF91D27D2D2001D51BB /* LaunchScreen.storyboard */,
 				AAC1BDFC1D27D2D2001D51BB /* Info.plist */,
+				AAC1BDF01D27D2D2001D51BB /* AppDelegate.swift */,
+				AAC1BE401D27F2F4001D51BB /* Constants.swift */,
+				AAC1BE2B1D27D9A0001D51BB /* Extensions */,
+				AAC1BE271D27D82F001D51BB /* Protocols */,
+				AAC1BE241D27D48C001D51BB /* Network */,
+				AAC1BE211D27D464001D51BB /* Models */,
+				AAC1BE231D27D474001D51BB /* ViewModels */,
+				AAC1BE221D27D46A001D51BB /* Views */,
+				AAC1BE1F1D27D40E001D51BB /* Storyboards */,
+				AAC1BE1E1D27D406001D51BB /* ViewControllers */,
+				AAC1BE461D27F8A6001D51BB /* Utils */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -110,7 +151,8 @@
 		AAC1BE041D27D2D3001D51BB /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				AAC1BE051D27D2D3001D51BB /* WeatherAppTests.swift */,
+				AAC1BE2F1D27DA92001D51BB /* Network */,
+				AAC1BE4E1D2802C8001D51BB /* Utils */,
 				AAC1BE071D27D2D3001D51BB /* Info.plist */,
 			);
 			path = WeatherAppTests;
@@ -120,9 +162,121 @@
 			isa = PBXGroup;
 			children = (
 				AAC1BE101D27D2D3001D51BB /* WeatherAppUITests.swift */,
+				AAC1BE441D27F698001D51BB /* UITestHelper.swift */,
+				AAC1BE421D27F5F1001D51BB /* BayswaterExample.json */,
 				AAC1BE121D27D2D3001D51BB /* Info.plist */,
 			);
 			path = WeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		AAC1BE1E1D27D406001D51BB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BDF21D27D2D2001D51BB /* ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AAC1BE1F1D27D40E001D51BB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BDF91D27D2D2001D51BB /* LaunchScreen.storyboard */,
+				AAC1BDF41D27D2D2001D51BB /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		AAC1BE211D27D464001D51BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		AAC1BE221D27D46A001D51BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AAC1BE231D27D474001D51BB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		AAC1BE241D27D48C001D51BB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE251D27D49F001D51BB /* HTTPClient.swift */,
+				AAC1BE3C1D27EC9F001D51BB /* SeededURLSession.swift */,
+				AAC1BE3A1D27EC5C001D51BB /* SeededDataTask.swift */,
+				AAC1BE3E1D27EECE001D51BB /* Config.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		AAC1BE271D27D82F001D51BB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE281D27D838001D51BB /* Network */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		AAC1BE281D27D838001D51BB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE291D27D856001D51BB /* URLSession.swift */,
+				AAC1BE321D27DD9D001D51BB /* URLSessionDataTask.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		AAC1BE2B1D27D9A0001D51BB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE2C1D27D9A7001D51BB /* Network */,
+				AAC1BE361D27E393001D51BB /* String+NSUTF8StringEncoding.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		AAC1BE2C1D27D9A7001D51BB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE2D1D27D9CC001D51BB /* NSURLSession+URLSession.swift */,
+				AAC1BE341D27DDC7001D51BB /* NSURLSessionDataTask+SessionDataTask.swift */,
+				AAC1BE381D27E7A8001D51BB /* NSHTTPURLResponse+StatusCode.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		AAC1BE2F1D27DA92001D51BB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE301D27DABD001D51BB /* HTTPClientTests.swift */,
+				AAC1BE4F1D280301001D51BB /* ConfigTests.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		AAC1BE461D27F8A6001D51BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE471D27F8BB001D51BB /* EndpointUtil.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		AAC1BE4E1D2802C8001D51BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE4C1D2802B7001D51BB /* EndpointUtilTests.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAC1BE431D27F5F1001D51BB /* BayswaterExample.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +413,18 @@
 			files = (
 				AAC1BDF31D27D2D2001D51BB /* ViewController.swift in Sources */,
 				AAC1BDF11D27D2D2001D51BB /* AppDelegate.swift in Sources */,
+				AAC1BE3B1D27EC5C001D51BB /* SeededDataTask.swift in Sources */,
+				AAC1BE351D27DDC7001D51BB /* NSURLSessionDataTask+SessionDataTask.swift in Sources */,
+				AAC1BE481D27F8BB001D51BB /* EndpointUtil.swift in Sources */,
+				AAC1BE391D27E7A8001D51BB /* NSHTTPURLResponse+StatusCode.swift in Sources */,
+				AAC1BE3F1D27EECE001D51BB /* Config.swift in Sources */,
+				AAC1BE2A1D27D856001D51BB /* URLSession.swift in Sources */,
+				AAC1BE411D27F2F4001D51BB /* Constants.swift in Sources */,
+				AAC1BE371D27E393001D51BB /* String+NSUTF8StringEncoding.swift in Sources */,
+				AAC1BE331D27DD9D001D51BB /* URLSessionDataTask.swift in Sources */,
+				AAC1BE261D27D49F001D51BB /* HTTPClient.swift in Sources */,
+				AAC1BE3D1D27EC9F001D51BB /* SeededURLSession.swift in Sources */,
+				AAC1BE2E1D27D9CC001D51BB /* NSURLSession+URLSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +432,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAC1BE061D27D2D3001D51BB /* WeatherAppTests.swift in Sources */,
+				AAC1BE4D1D2802B7001D51BB /* EndpointUtilTests.swift in Sources */,
+				AAC1BE501D280301001D51BB /* ConfigTests.swift in Sources */,
+				AAC1BE311D27DABD001D51BB /* HTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +443,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAC1BE111D27D2D3001D51BB /* WeatherAppUITests.swift in Sources */,
+				AAC1BE451D27F698001D51BB /* UITestHelper.swift in Sources */,
+				AAC1BE491D280129001D51BB /* EndpointUtil.swift in Sources */,
+				AAC1BE4A1D280136001D51BB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +505,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -379,6 +552,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

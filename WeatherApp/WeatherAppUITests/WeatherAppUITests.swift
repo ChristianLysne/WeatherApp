@@ -9,28 +9,29 @@
 import XCTest
 
 class WeatherAppUITests: XCTestCase {
-        
+    
+    let app = XCUIApplication()
+    
     override func setUp() {
         super.setUp()
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        app.launchArguments += ["UITesting"]
         
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        let latitude: CGFloat = 51.508369
+        let longitude: CGFloat = -0.176125
+        
+        // Replace = with EQUALS to use in launchEnvironment
+        let baysWaterURL = EndpointUtil.weatherTodayEndpointWithLatitude(latitude, longitude: longitude).stringByReplacingOccurrencesOfString("=", withString: "EQUALS")
+        
+        let uitestHelper = UITestHelper()
+        app.launchEnvironment[baysWaterURL] = uitestHelper.readJSONFromFile("BayswaterExample")
+        
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
 }
