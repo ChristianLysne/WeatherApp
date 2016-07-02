@@ -15,6 +15,6 @@ struct Constants {
     }
     
     struct Endpoints {
-        static let WeatherToday = "api.openweathermap.org/data/2.5/weather?"
+        static let WeatherToday = "http://api.openweathermap.org/data/2.5/weather?"
     }
 }

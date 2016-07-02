@@ -23,8 +23,8 @@ class WeatherAppUITests: XCTestCase {
         // Replace = with EQUALS to use in launchEnvironment
         let baysWaterURL = EndpointUtil.weatherTodayEndpointWithLatitude(latitude, longitude: longitude).stringByReplacingOccurrencesOfString("=", withString: "EQUALS")
         
-        let uitestHelper = UITestHelper()
-        app.launchEnvironment[baysWaterURL] = uitestHelper.readJSONFromFile("BayswaterExample")
+        let testHelper = TestHelper()
+        app.launchEnvironment[baysWaterURL] = testHelper.readJSONFromFile("BayswaterExample")
         
         continueAfterFailure = false
         XCUIApplication().launch()
