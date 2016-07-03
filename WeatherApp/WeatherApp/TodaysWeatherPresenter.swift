@@ -31,7 +31,7 @@ extension TodaysWeatherPresenter: TodaysWeatherInteractorOutput {
         style.alignment = .Center
         
         let attributes = [NSForegroundColorAttributeName: Constants.Colors.TodaysWeatherInfo,
-                          NSFontAttributeName : UIFont.systemFontOfSize(50.0),
+                          NSFontAttributeName : UIFont.systemFontOfSize(40.0),
                           NSParagraphStyleAttributeName: style]
         let errorMessageString: String
         var buttonText: String?
