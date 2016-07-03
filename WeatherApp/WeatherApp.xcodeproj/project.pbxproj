@@ -806,6 +806,7 @@
 				AAC1BE171D27D2D3001D51BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAC1BE181D27D2D3001D51BB /* Build configuration list for PBXNativeTarget "WeatherAppTests" */ = {
 			isa = XCConfigurationList;
@@ -814,6 +815,7 @@
 				AAC1BE1A1D27D2D3001D51BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAC1BE1B1D27D2D3001D51BB /* Build configuration list for PBXNativeTarget "WeatherAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -822,6 +824,7 @@
 				AAC1BE1D1D27D2D3001D51BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
