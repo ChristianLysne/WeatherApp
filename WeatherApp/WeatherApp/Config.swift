@@ -12,6 +12,6 @@ struct Config {
     static let urlSession: NSURLSession = UITesting() ? SeededURLSession() : NSURLSession.sharedSession()
 }
 
-private func UITesting() -> Bool {
+func UITesting() -> Bool {
     return NSProcessInfo.processInfo().arguments.contains("UITesting")
 }

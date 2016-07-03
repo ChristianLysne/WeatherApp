@@ -10,18 +10,26 @@ import Foundation
 import CoreLocation
 import UIKit
 
+enum LocationError {
+    case PermissionDenied
+    case LocationNotFound
+}
+
 protocol LocationDelegate: class {
-    func updatedLocation(location: CLLocation)
+    func updatedLocation()
+    func couldNotFindLocationWithErrorCode(errorCode: LocationError)
+}
+
+protocol Location {
+    weak var locationDelegate: LocationDelegate? { get set }
+    func location() -> CLLocation?
+    func startTrackingLocation()
 }
 
 class LocationManager: NSObject {
     let manager: CLLocationManager = CLLocationManager()
     weak var locationDelegate: LocationDelegate?
-    
-    var location: CLLocation? {
-        return manager.location
-    }
-    
+
     override init() {
         super.init()
         
@@ -29,9 +37,14 @@ class LocationManager: NSObject {
         manager.distanceFilter = 10
         manager.delegate = self
     }
+}
+
+extension LocationManager: Location {
+    func location() -> CLLocation? {
+        return manager.location
+    }
     
     func startTrackingLocation() {
-        
         let status = CLLocationManager.authorizationStatus()
         
         if status == .NotDetermined {
@@ -40,25 +53,8 @@ class LocationManager: NSObject {
             || status == CLAuthorizationStatus.AuthorizedAlways {
             manager.startUpdatingLocation()
         } else {
-            showNoPermissionsAlert()
+            locationDelegate?.couldNotFindLocationWithErrorCode(.PermissionDenied)
         }
-    }
-    
-    func showNoPermissionsAlert() {
-        
-        guard let topController = UIApplication.sharedApplication().keyWindow?.rootViewController else {
-            return
-        }
-        
-        let alertController = UIAlertController(title: "No permission",
-                                                message: "In order to work, the app needs your location", preferredStyle: .Alert)
-        let openSettings = UIAlertAction(title: "Open settings", style: .Default, handler: {
-            (action) -> Void in
-            let URL = NSURL(string: UIApplicationOpenSettingsURLString)
-            UIApplication.sharedApplication().openURL(URL!)
-        })
-        alertController.addAction(openSettings)
-        topController.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 
@@ -71,17 +67,19 @@ extension LocationManager: CLLocationManagerDelegate {
         case .AuthorizedWhenInUse, .AuthorizedAlways:
             manager.startUpdatingLocation()
             
-            if let location = manager.location {
-                locationDelegate?.updatedLocation(location)
+            if let _ = manager.location {
+                locationDelegate?.updatedLocation()
+            } else {
+                locationDelegate?.couldNotFindLocationWithErrorCode(.LocationNotFound)
             }
             break
         case .Restricted, .Denied:
-            showNoPermissionsAlert()
+            locationDelegate?.couldNotFindLocationWithErrorCode(.PermissionDenied)
             break
         }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        locationDelegate?.updatedLocation(newLocation)
+        locationDelegate?.updatedLocation()
     }
 }

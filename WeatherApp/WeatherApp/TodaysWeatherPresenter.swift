@@ -11,7 +11,7 @@ import UIKit
 
 protocol TodaysWeatherPresenterOutput: class {
     func displayTodaysWeather(todaysWeatherViewModel: TodaysWeatherViewModel)
-    func failedUpdatingTodaysWeatherWithErrorMessage(errorMessage: NSAttributedString)
+    func failedUpdatingTodaysWeatherWithErrorMessage(errorMessage: NSAttributedString, buttonText: String?, error: UpdateWeatherError)
 }
 
 struct TodaysWeatherPresenter {
@@ -25,7 +25,7 @@ extension TodaysWeatherPresenter: TodaysWeatherInteractorOutput {
         output.displayTodaysWeather(viewModel)
     }
     
-    func failedUpdatingTodaysWeather() {
+    func failedUpdatingTodaysWeatherWithError(error: UpdateWeatherError) {
         
         let style = NSMutableParagraphStyle()
         style.alignment = .Center
@@ -33,7 +33,21 @@ extension TodaysWeatherPresenter: TodaysWeatherInteractorOutput {
         let attributes = [NSForegroundColorAttributeName: Constants.Colors.TodaysWeatherInfo,
                           NSFontAttributeName : UIFont.systemFontOfSize(50.0),
                           NSParagraphStyleAttributeName: style]
-        let errorMessage = NSAttributedString(string: "Failed to update todays weather 😞", attributes: attributes)
-        output.failedUpdatingTodaysWeatherWithErrorMessage(errorMessage)
+        let errorMessageString: String
+        var buttonText: String?
+        
+        switch error {
+        case .FailedToLoadData:
+            errorMessageString = "Failed to update todays weather 😞"
+            buttonText = "Try again"
+        case .LocationNotFound:
+            errorMessageString = "Location not found 😞"
+        case .NoPermission:
+            errorMessageString = "You have not given permission to access location 😞"
+            buttonText = "Go to settings"
+        }
+        
+        let errorMessage = NSAttributedString(string: errorMessageString, attributes: attributes)
+        output.failedUpdatingTodaysWeatherWithErrorMessage(errorMessage, buttonText: buttonText, error: error)
     }
 }

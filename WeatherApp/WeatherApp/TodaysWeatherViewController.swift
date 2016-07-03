@@ -10,52 +10,60 @@ import UIKit
 import CoreLocation
 
 protocol TodaysWeatherViewControllerOutput {
-    func updateTodaysWeatherForLatitude(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    func updateTodaysWeather()
+}
+
+enum UpdateWeatherState {
+    case Loading
+    case Error
+    case DisplayWeather
 }
 
 class TodaysWeatherViewController: UIViewController {
 
-    @IBOutlet weak var todaysWeatherView: UIView!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var weatherImageView: UIImageView!
-    @IBOutlet weak var temperatureMaxInfoLabelWithIconView: InfoLabelAndIconView!
-    @IBOutlet weak var temperatureMinInfoLabelAndIconView: InfoLabelAndIconView!
-    @IBOutlet weak var windInfoLabelAndIconView: InfoLabelAndIconView!
-    @IBOutlet weak var rainInfoLabelAndIconView: InfoLabelAndIconView!
-    
+    @IBOutlet weak var todaysWeatherView: TodaysWeatherView!
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var tryAgainButton: UIButton!
+    @IBOutlet weak var errorButton: ErrorButton!
+    @IBOutlet weak var loadingView: LoadingView!
     
     var output: TodaysWeatherViewControllerOutput!
     var client = HTTPClient()
-    var locationManager = LocationManager()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        updateViewWithState(.Loading)
         TodaysWeatherConfigurator.sharedInstance.configure(self, client: client)
-        
-        locationManager.locationDelegate = self
-        locationManager.startTrackingLocation()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-                
-        tryAgainButton.layer.cornerRadius = 5
-        tryAgainButton.layer.borderColor = Constants.Colors.TodaysWeatherInfo.CGColor
-        tryAgainButton.layer.borderWidth = 1
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
     
-    @IBAction func tryAgainButtonTapped(sender: AnyObject) {
-        if let location = locationManager.location {
-            output.updateTodaysWeatherForLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
+    @IBAction func errorButtonTapped(sender: AnyObject) {
+        if let errorButton = sender as? ErrorButton, error = errorButton.error {
+            switch error {
+            case .FailedToLoadData:
+                updateViewWithState(.Loading)
+                output.updateTodaysWeather()
+            case .LocationNotFound:
+                break;
+            case .NoPermission:
+                let URL = NSURL(string: UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(URL!)
+            }
+        }
+    }
+    
+    func updateViewWithState(state: UpdateWeatherState) {
+        state == .Loading ? loadingView.startAnimating() : loadingView.stopAnimating()
+        
+        self.loadingView.hidden = state != .Loading
+        
+        UIView.animateWithDuration(1.0) {
+            self.errorView.alpha = state == .Error ? 1 : 0
+            self.todaysWeatherView.alpha = state == .DisplayWeather ? 1 : 0
         }
     }
 }
@@ -63,36 +71,25 @@ class TodaysWeatherViewController: UIViewController {
 extension TodaysWeatherViewController: TodaysWeatherPresenterOutput {
     func displayTodaysWeather(viewModel: TodaysWeatherViewModel) {
         dispatch_async(dispatch_get_main_queue()) {
-            self.todaysWeatherView.hidden = false
-            self.errorView.hidden = true
-            self.locationLabel.attributedText = viewModel.locationAttributedString
-            self.temperatureLabel.attributedText = viewModel.temperatureAttributedString
-            self.temperatureMaxInfoLabelWithIconView.configureWithInfoTextAndIcon(viewModel.temperatureMaxInfoTextAndIcon,
-                                                                                  tintColor: Constants.Colors.TodaysWeatherInfo)
-            self.temperatureMinInfoLabelAndIconView.configureWithInfoTextAndIcon(viewModel.temperatureMinInfoTextAndIcon,
-                                                                                 tintColor: Constants.Colors.TodaysWeatherInfo)
-            self.windInfoLabelAndIconView.configureWithInfoTextAndIcon(viewModel.windSpeedInfoTextAndIcon,
-                                                                       tintColor: Constants.Colors.TodaysWeatherInfo)
-            self.rainInfoLabelAndIconView.configureWithInfoTextAndIcon(viewModel.rainInfoTextAndIcon,
-                                                                       tintColor: Constants.Colors.TodaysWeatherInfo)
-            if let imageURL = viewModel.weatherIconImageURL {
-                self.weatherImageView.setImageFromURL(imageURL)
-            }
+            self.todaysWeatherView.configureViewWithViewModel(viewModel)
+            self.updateViewWithState(.DisplayWeather)
         }
     }
     
-    func failedUpdatingTodaysWeatherWithErrorMessage(errorMessage: NSAttributedString) {
+    func failedUpdatingTodaysWeatherWithErrorMessage(errorMessage: NSAttributedString, buttonText: String?, error: UpdateWeatherError) {
         dispatch_async(dispatch_get_main_queue()) {
-            self.todaysWeatherView.hidden = true
-            self.errorView.hidden = false
+            
+            self.updateViewWithState(.Error)
             self.errorLabel.attributedText = errorMessage
+            
+            self.errorButton.error = error
+            if let buttonText = buttonText {
+                self.errorButton.setTitle(buttonText, forState: .Normal)
+                self.errorButton.hidden = false
+            } else {
+                self.errorButton.hidden = true
+            }
         }
-    }
-}
-
-extension TodaysWeatherViewController: LocationDelegate {
-    func updatedLocation(location: CLLocation) {
-        output.updateTodaysWeatherForLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
     }
 }
 

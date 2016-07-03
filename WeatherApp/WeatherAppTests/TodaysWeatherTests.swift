@@ -16,9 +16,6 @@ class TodaysWeatherTests: XCTestCase {
     let urlSession = MockURLSession()
     var viewController: TodaysWeatherViewController!
     
-    let latitude: CLLocationDegrees = 51.508369
-    let longitude: CLLocationDegrees = -0.176125
-    
     override func setUp() {
         super.setUp()
         
@@ -29,24 +26,6 @@ class TodaysWeatherTests: XCTestCase {
         super.tearDown()
     }
     
-    func testViewControllerRequestsTodaysWeather() {
-        
-        let output = MockTodaysWeatherViewControllerOutput()
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        self.viewController = storyboard.instantiateInitialViewController() as! TodaysWeatherViewController
-        self.viewController.client = client
-        self.viewController.output = output
-        
-        UIApplication.sharedApplication().keyWindow!.rootViewController = viewController
-        
-        XCTAssertNotNil(viewController.view)
-        
-        self.viewController.updatedLocation(CLLocation(latitude: latitude, longitude: longitude))
-        
-        XCTAssertTrue(output.updateTodaysWeatherCalled)
-    }
-    
     func testInteractorCallsPresentTodaysWeatherWhenReceivingAValidResponse() {
         let output = MockTodaysWeatherInteractorOutput()
         
@@ -55,9 +34,12 @@ class TodaysWeatherTests: XCTestCase {
         
         urlSession.data = expectedData.nsutf8StringEncoding
         urlSession.response = NSHTTPURLResponse(statusCode: 200)
-        let interactor = TodaysWeatherInteractor(output: output, client: client)
+        let interactor = TodaysWeatherInteractor()
+        interactor.output = output
+        interactor.client = client
+        interactor.locationManager = MockLocation()
         
-        interactor.updateTodaysWeatherForLatitude(latitude, longitude: longitude)
+        interactor.updateTodaysWeather()
         
         XCTAssertTrue(output.presentTodaysWeatherCalled)
         XCTAssertFalse(output.failedUpdatingTodaysWeatherCalled)
@@ -68,9 +50,11 @@ class TodaysWeatherTests: XCTestCase {
         
         urlSession.data = nil
         urlSession.response = NSHTTPURLResponse(statusCode: 200)
-        let interactor = TodaysWeatherInteractor(output: output, client: client)
+        let interactor = TodaysWeatherInteractor()
+        interactor.output = output
+        interactor.client = client
         
-        interactor.updateTodaysWeatherForLatitude(latitude, longitude: longitude)
+        interactor.updateTodaysWeather()
         
         XCTAssertFalse(output.presentTodaysWeatherCalled)
         XCTAssertTrue(output.failedUpdatingTodaysWeatherCalled)
@@ -81,9 +65,11 @@ class TodaysWeatherTests: XCTestCase {
         
         urlSession.data = "Response".nsutf8StringEncoding
         urlSession.response = NSHTTPURLResponse(statusCode: 200)
-        let interactor = TodaysWeatherInteractor(output: output, client: client)
+        let interactor = TodaysWeatherInteractor()
+        interactor.output = output
+        interactor.client = client
         
-        interactor.updateTodaysWeatherForLatitude(latitude, longitude: longitude)
+        interactor.updateTodaysWeather()
         
         XCTAssertFalse(output.presentTodaysWeatherCalled)
         XCTAssertTrue(output.failedUpdatingTodaysWeatherCalled)
@@ -94,9 +80,11 @@ class TodaysWeatherTests: XCTestCase {
         
         urlSession.data = "{\"this\":\"should fail parsing\"}".nsutf8StringEncoding
         urlSession.response = NSHTTPURLResponse(statusCode: 200)
-        let interactor = TodaysWeatherInteractor(output: output, client: client)
+        let interactor = TodaysWeatherInteractor()
+        interactor.output = output
+        interactor.client = client
         
-        interactor.updateTodaysWeatherForLatitude(latitude, longitude: longitude)
+        interactor.updateTodaysWeather()
         
         XCTAssertFalse(output.presentTodaysWeatherCalled)
         XCTAssertTrue(output.failedUpdatingTodaysWeatherCalled)
@@ -126,7 +114,25 @@ class TodaysWeatherTests: XCTestCase {
         let output = MockTodaysWeatherPresenterOutput()
         
         let presenter = TodaysWeatherPresenter(output: output)
-        presenter.failedUpdatingTodaysWeather()
+        presenter.failedUpdatingTodaysWeatherWithError(.FailedToLoadData)
+        
+        XCTAssertTrue(output.failedUpdatingTodaysWeatherWithErrorMessageCalled)
+    }
+    
+    func testPresenterOutputErrorMessageIfLocationNotFound() {
+        let output = MockTodaysWeatherPresenterOutput()
+        
+        let presenter = TodaysWeatherPresenter(output: output)
+        presenter.failedUpdatingTodaysWeatherWithError(.LocationNotFound)
+        
+        XCTAssertTrue(output.failedUpdatingTodaysWeatherWithErrorMessageCalled)
+    }
+    
+    func testPresenterOutputErrorMessageIfLocationNotPermitted() {
+        let output = MockTodaysWeatherPresenterOutput()
+        
+        let presenter = TodaysWeatherPresenter(output: output)
+        presenter.failedUpdatingTodaysWeatherWithError(.NoPermission)
         
         XCTAssertTrue(output.failedUpdatingTodaysWeatherWithErrorMessageCalled)
     }
@@ -135,7 +141,7 @@ class TodaysWeatherTests: XCTestCase {
     class MockTodaysWeatherViewControllerOutput: TodaysWeatherViewControllerOutput {
         private (set) var updateTodaysWeatherCalled = false
         
-        func updateTodaysWeatherForLatitude(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        func updateTodaysWeather() {
             updateTodaysWeatherCalled = true
         }
     }
@@ -148,7 +154,7 @@ class TodaysWeatherTests: XCTestCase {
             presentTodaysWeatherCalled = true
         }
         
-        func failedUpdatingTodaysWeather() {
+        func failedUpdatingTodaysWeatherWithError(error: UpdateWeatherError) {
             failedUpdatingTodaysWeatherCalled = true
         }
     }
@@ -161,8 +167,22 @@ class TodaysWeatherTests: XCTestCase {
             displayTodaysWeatherCalled = true
         }
         
-        func failedUpdatingTodaysWeatherWithErrorMessage(errorMessage: NSAttributedString) {
+        func failedUpdatingTodaysWeatherWithErrorMessage(errorMessage: NSAttributedString, buttonText: String?, error: UpdateWeatherError) {
             failedUpdatingTodaysWeatherWithErrorMessageCalled = true
+        }
+    }
+    
+    class MockLocation: Location {
+        weak var locationDelegate: LocationDelegate?
+        
+        func location() -> CLLocation? {
+            let latitude: CLLocationDegrees = 51.508369
+            let longitude: CLLocationDegrees = -0.176125
+            return CLLocation(latitude: latitude, longitude: longitude)
+        }
+        
+        func startTrackingLocation() {
+            
         }
     }
     

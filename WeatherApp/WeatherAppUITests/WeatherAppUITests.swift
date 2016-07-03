@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreLocation
 
 class WeatherAppUITests: XCTestCase {
     
@@ -15,23 +16,36 @@ class WeatherAppUITests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        app.launchArguments += ["UITesting"]
-        
-        let latitude: CGFloat = 51.508369
-        let longitude: CGFloat = -0.176125
-        
-        // Replace = with EQUALS to use in launchEnvironment
-        let baysWaterURL = EndpointUtil.weatherTodayEndpointWithLatitude(latitude, longitude: longitude).stringByReplacingOccurrencesOfString("=", withString: "EQUALS")
+        app.launchArguments.append("UITesting")
         
         let testHelper = TestHelper()
-        app.launchEnvironment[baysWaterURL] = testHelper.readJSONFromFile("BayswaterExample")
+        app.launchEnvironment["UITesting-URL"] = testHelper.readJSONFromFile("BayswaterExample")
         
         continueAfterFailure = false
-        XCUIApplication().launch()
+        app.launch()
 
     }
     
     override func tearDown() {
         super.tearDown()
+    }
+    
+    func testAllDataInTodaysWeatherViewIsDisplayedCorrectly() {
+        
+        // Used tap() instead of waitForExpectationsWithTimeout, as 
+        // this will also let the OS dismiss the location alert if it appears
+        app.staticTexts["Bayswater"].tap()
+        
+        XCTAssertTrue(app.staticTexts["Bayswater"].exists)
+        XCTAssertTrue(app.staticTexts["290.66°"].exists)
+        XCTAssertTrue(app.images["10d"].exists)
+        XCTAssertTrue(app.images["ArrowUp"].exists)
+        XCTAssertTrue(app.images["ArrowDown"].exists)
+        XCTAssertTrue(app.images["ArrowWind"].exists)
+        XCTAssertTrue(app.images["RainDrop"].exists)
+        XCTAssertTrue(app.staticTexts["292.59°"].exists)
+        XCTAssertTrue(app.staticTexts["289.15°"].exists)
+        XCTAssertTrue(app.staticTexts["7.2 mps"].exists)
+        XCTAssertTrue(app.staticTexts["0.0 mm"].exists)
     }
 }

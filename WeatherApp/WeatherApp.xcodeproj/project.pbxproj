@@ -43,9 +43,19 @@
 		AAC1BE6B1D2856C3001D51BB /* InfoLabelAndIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE6A1D2856C3001D51BB /* InfoLabelAndIconView.swift */; };
 		AAC1BE6D1D2856F9001D51BB /* XibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE6C1D2856F9001D51BB /* XibLoadingView.swift */; };
 		AAC1BE6F1D28572D001D51BB /* InfoLabelAndIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC1BE6E1D28572D001D51BB /* InfoLabelAndIconView.xib */; };
-		AAC1BE721D2879DC001D51BB /* UIImageView+SetImageFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE711D2879DC001D51BB /* UIImageView+SetImageFromURL.swift */; };
 		AAC1BE751D2884C0001D51BB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE741D2884C0001D51BB /* LocationManager.swift */; };
 		AAC1BE771D28939C001D51BB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE761D28939C001D51BB /* GradientView.swift */; };
+		AAC1BE7A1D291427001D51BB /* TodaysWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE791D291427001D51BB /* TodaysWeatherView.swift */; };
+		AAC1BE7C1D291430001D51BB /* TodaysWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC1BE7B1D291430001D51BB /* TodaysWeatherView.xib */; };
+		AAC1BE7E1D2915A1001D51BB /* ErrorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE7D1D2915A1001D51BB /* ErrorButton.swift */; };
+		AAC1BE801D292BDE001D51BB /* CGFloat+DegreesToRadians.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE7F1D292BDE001D51BB /* CGFloat+DegreesToRadians.swift */; };
+		AAC1BE821D29324A001D51BB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE811D29324A001D51BB /* LoadingView.swift */; };
+		AAC1BE841D294A3E001D51BB /* TodaysWeatherViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE831D294A3E001D51BB /* TodaysWeatherViewTests.swift */; };
+		AAC1BE871D294E39001D51BB /* CGFloatDegreesToRadiansTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE861D294E39001D51BB /* CGFloatDegreesToRadiansTests.swift */; };
+		AAC1BE881D295967001D51BB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE3E1D27EECE001D51BB /* Config.swift */; };
+		AAC1BE891D295970001D51BB /* SeededDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE3A1D27EC5C001D51BB /* SeededDataTask.swift */; };
+		AAC1BE8A1D295973001D51BB /* SeededURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE3C1D27EC9F001D51BB /* SeededURLSession.swift */; };
+		AAC1BE8B1D295B29001D51BB /* String+NSUTF8StringEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE361D27E393001D51BB /* String+NSUTF8StringEncoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,9 +114,15 @@
 		AAC1BE6A1D2856C3001D51BB /* InfoLabelAndIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLabelAndIconView.swift; sourceTree = "<group>"; };
 		AAC1BE6C1D2856F9001D51BB /* XibLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibLoadingView.swift; sourceTree = "<group>"; };
 		AAC1BE6E1D28572D001D51BB /* InfoLabelAndIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoLabelAndIconView.xib; sourceTree = "<group>"; };
-		AAC1BE711D2879DC001D51BB /* UIImageView+SetImageFromURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SetImageFromURL.swift"; sourceTree = "<group>"; };
 		AAC1BE741D2884C0001D51BB /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		AAC1BE761D28939C001D51BB /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		AAC1BE791D291427001D51BB /* TodaysWeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysWeatherView.swift; sourceTree = "<group>"; };
+		AAC1BE7B1D291430001D51BB /* TodaysWeatherView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodaysWeatherView.xib; sourceTree = "<group>"; };
+		AAC1BE7D1D2915A1001D51BB /* ErrorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorButton.swift; sourceTree = "<group>"; };
+		AAC1BE7F1D292BDE001D51BB /* CGFloat+DegreesToRadians.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+DegreesToRadians.swift"; sourceTree = "<group>"; };
+		AAC1BE811D29324A001D51BB /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		AAC1BE831D294A3E001D51BB /* TodaysWeatherViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysWeatherViewTests.swift; sourceTree = "<group>"; };
+		AAC1BE861D294E39001D51BB /* CGFloatDegreesToRadiansTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatDegreesToRadiansTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +200,7 @@
 				AAC1BE631D2829E1001D51BB /* TodaysWeather */,
 				AAC1BE2F1D27DA92001D51BB /* Network */,
 				AAC1BE4E1D2802C8001D51BB /* Utils */,
+				AAC1BE851D294E22001D51BB /* Extensions */,
 				AAC1BE071D27D2D3001D51BB /* Info.plist */,
 			);
 			path = WeatherAppTests;
@@ -230,6 +247,9 @@
 			children = (
 				AAC1BE6C1D2856F9001D51BB /* XibLoadingView.swift */,
 				AAC1BE761D28939C001D51BB /* GradientView.swift */,
+				AAC1BE7D1D2915A1001D51BB /* ErrorButton.swift */,
+				AAC1BE811D29324A001D51BB /* LoadingView.swift */,
+				AAC1BE781D291415001D51BB /* TodaysWeatherView */,
 				AAC1BE701D2857BB001D51BB /* InfoLabelAndIconView */,
 			);
 			name = Views;
@@ -276,7 +296,7 @@
 			children = (
 				AAC1BE2C1D27D9A7001D51BB /* Network */,
 				AAC1BE361D27E393001D51BB /* String+NSUTF8StringEncoding.swift */,
-				AAC1BE711D2879DC001D51BB /* UIImageView+SetImageFromURL.swift */,
+				AAC1BE7F1D292BDE001D51BB /* CGFloat+DegreesToRadians.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -344,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				AAC1BE641D282A00001D51BB /* TodaysWeatherTests.swift */,
+				AAC1BE831D294A3E001D51BB /* TodaysWeatherViewTests.swift */,
 			);
 			name = TodaysWeather;
 			sourceTree = "<group>";
@@ -363,6 +384,23 @@
 				AAC1BE741D2884C0001D51BB /* LocationManager.swift */,
 			);
 			name = Location;
+			sourceTree = "<group>";
+		};
+		AAC1BE781D291415001D51BB /* TodaysWeatherView */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE791D291427001D51BB /* TodaysWeatherView.swift */,
+				AAC1BE7B1D291430001D51BB /* TodaysWeatherView.xib */,
+			);
+			name = TodaysWeatherView;
+			sourceTree = "<group>";
+		};
+		AAC1BE851D294E22001D51BB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE861D294E39001D51BB /* CGFloatDegreesToRadiansTests.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,6 +511,7 @@
 				AAC1BDFB1D27D2D2001D51BB /* LaunchScreen.storyboard in Resources */,
 				AAC1BDF81D27D2D2001D51BB /* Assets.xcassets in Resources */,
 				AAC1BDF61D27D2D2001D51BB /* Main.storyboard in Resources */,
+				AAC1BE7C1D291430001D51BB /* TodaysWeatherView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,9 +542,11 @@
 				AAC1BE521D28043E001D51BB /* TodaysWeather.swift in Sources */,
 				AAC1BDF11D27D2D2001D51BB /* AppDelegate.swift in Sources */,
 				AAC1BE3B1D27EC5C001D51BB /* SeededDataTask.swift in Sources */,
+				AAC1BE7A1D291427001D51BB /* TodaysWeatherView.swift in Sources */,
 				AAC1BE351D27DDC7001D51BB /* NSURLSessionDataTask+SessionDataTask.swift in Sources */,
 				AAC1BE481D27F8BB001D51BB /* EndpointUtil.swift in Sources */,
 				AAC1BE391D27E7A8001D51BB /* NSHTTPURLResponse+StatusCode.swift in Sources */,
+				AAC1BE821D29324A001D51BB /* LoadingView.swift in Sources */,
 				AAC1BE751D2884C0001D51BB /* LocationManager.swift in Sources */,
 				AAC1BE581D281705001D51BB /* TodaysWeatherInteractor.swift in Sources */,
 				AAC1BE5D1D2817D3001D51BB /* TodaysWeatherConfigurator.swift in Sources */,
@@ -514,14 +555,15 @@
 				AAC1BE3F1D27EECE001D51BB /* Config.swift in Sources */,
 				AAC1BE2A1D27D856001D51BB /* URLSession.swift in Sources */,
 				AAC1BE771D28939C001D51BB /* GradientView.swift in Sources */,
-				AAC1BE721D2879DC001D51BB /* UIImageView+SetImageFromURL.swift in Sources */,
 				AAC1BE411D27F2F4001D51BB /* Constants.swift in Sources */,
 				AAC1BE371D27E393001D51BB /* String+NSUTF8StringEncoding.swift in Sources */,
+				AAC1BE801D292BDE001D51BB /* CGFloat+DegreesToRadians.swift in Sources */,
 				AAC1BE6D1D2856F9001D51BB /* XibLoadingView.swift in Sources */,
 				AAC1BE331D27DD9D001D51BB /* URLSessionDataTask.swift in Sources */,
 				AAC1BE261D27D49F001D51BB /* HTTPClient.swift in Sources */,
 				AAC1BE3D1D27EC9F001D51BB /* SeededURLSession.swift in Sources */,
 				AAC1BE6B1D2856C3001D51BB /* InfoLabelAndIconView.swift in Sources */,
+				AAC1BE7E1D2915A1001D51BB /* ErrorButton.swift in Sources */,
 				AAC1BE2E1D27D9CC001D51BB /* NSURLSession+URLSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,8 +575,10 @@
 				AAC1BE4D1D2802B7001D51BB /* EndpointUtilTests.swift in Sources */,
 				AAC1BE691D28372C001D51BB /* TestHelper.swift in Sources */,
 				AAC1BE501D280301001D51BB /* ConfigTests.swift in Sources */,
+				AAC1BE871D294E39001D51BB /* CGFloatDegreesToRadiansTests.swift in Sources */,
 				AAC1BE651D282A00001D51BB /* TodaysWeatherTests.swift in Sources */,
 				AAC1BE311D27DABD001D51BB /* HTTPClientTests.swift in Sources */,
+				AAC1BE841D294A3E001D51BB /* TodaysWeatherViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +588,11 @@
 			files = (
 				AAC1BE111D27D2D3001D51BB /* WeatherAppUITests.swift in Sources */,
 				AAC1BE451D27F698001D51BB /* TestHelper.swift in Sources */,
+				AAC1BE881D295967001D51BB /* Config.swift in Sources */,
 				AAC1BE491D280129001D51BB /* EndpointUtil.swift in Sources */,
+				AAC1BE8B1D295B29001D51BB /* String+NSUTF8StringEncoding.swift in Sources */,
+				AAC1BE8A1D295973001D51BB /* SeededURLSession.swift in Sources */,
+				AAC1BE891D295970001D51BB /* SeededDataTask.swift in Sources */,
 				AAC1BE4A1D280136001D51BB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

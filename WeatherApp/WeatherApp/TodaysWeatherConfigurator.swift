@@ -21,10 +21,12 @@ struct TodaysWeatherConfigurator {
         var presenter = TodaysWeatherPresenter()
         presenter.output = viewController
         
-        var interactor = TodaysWeatherInteractor()
+        let interactor = TodaysWeatherInteractor()
         interactor.client = client
         interactor.output = presenter
         
         viewController.output = interactor
+        
+        interactor.startTrackingLocation()
     }
 }

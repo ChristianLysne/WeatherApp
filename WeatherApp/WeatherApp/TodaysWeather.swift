@@ -53,7 +53,13 @@ struct TodaysWeather {
         let windSpeed = dictionary["wind"]?["speed"] as? Float
         let windDegrees = dictionary["wind"]?["deg"] as? Float
 
-        let rainInMM = dictionary["rain"]?["3h"] as? Float
+        var rainInMM = dictionary["rain"]?["3h"] as? Float
+        
+        // Sometime it returnes 1h instead of the documented 3h
+        if rainInMM == nil {
+            rainInMM = dictionary["rain"]?["1h"] as? Float
+        }
+        
         let timeInUnix = dictionary["dt"] as? Double
         
         if let id = id,

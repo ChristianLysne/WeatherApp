@@ -14,8 +14,4 @@ struct EndpointUtil {
     static func weatherTodayEndpointWithLatitude(latitude: CLLocationDegrees, longitude: CLLocationDegrees) -> String {
         return "\(Constants.Endpoints.WeatherToday)lat=\(latitude)&lon=\(longitude)&units=metric&APPID=\(Constants.APIKeys.OpenWeatherMap)"
     }
-    
-    static func imageURLFromWeatherIconName(iconName: String) -> NSURL? {
-        return NSURL(string: "\(Constants.Endpoints.WeatherIcon)10d.png")
-    }
 }

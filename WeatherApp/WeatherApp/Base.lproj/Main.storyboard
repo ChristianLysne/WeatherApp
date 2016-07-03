@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFo-YE-TLQ" userLabel="Error View">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFo-YE-TLQ" userLabel="Error View">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTf-3V-Iss">
@@ -28,18 +28,18 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8av-xR-EaZ">
-                                        <rect key="frame" x="97" y="354.5" width="180" height="90"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8av-xR-EaZ" customClass="ErrorButton" customModule="WeatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="77" y="354.5" width="220" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="aff-2x-w0w"/>
-                                            <constraint firstAttribute="width" constant="180" id="pyI-c6-u85"/>
+                                            <constraint firstAttribute="width" constant="220" id="pyI-c6-u85"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Try again?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="tryAgainButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ifz-Kz-0tG"/>
+                                            <action selector="errorButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xzh-qY-923"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -52,103 +52,28 @@
                                     <constraint firstItem="8av-xR-EaZ" firstAttribute="centerX" secondItem="CFo-YE-TLQ" secondAttribute="centerX" id="deH-Nh-m9N"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sw6-1N-eJJ" userLabel="TodaysWeatherView">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sw6-1N-eJJ" userLabel="TodaysWeatherView" customClass="TodaysWeatherView" customModule="WeatherApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ekn-Lh-bFf" customClass="LoadingView" customModule="WeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="67" y="214" width="240" height="240"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7G-ml-sKT" userLabel="Location Label">
-                                        <rect key="frame" x="20" y="20" width="335" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jD0-gc-slF">
+                                        <rect key="frame" x="78.5" y="108.5" width="83" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="59" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unB-Yy-lfS" userLabel="Temp Label">
-                                        <rect key="frame" x="20" y="70" width="335" height="143.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="120"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Qb-MP-Rrf">
-                                        <rect key="frame" x="20" y="263" width="157" height="157"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="5Qb-MP-Rrf" secondAttribute="height" multiplier="1:1" id="JUh-BJ-Ylq"/>
-                                            <constraint firstAttribute="width" constant="160" id="NeS-Jy-A5b"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="NeS-Jy-A5b"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="f5L-So-JQ2">
-                                        <rect key="frame" x="197.5" y="271.5" width="157.5" height="140"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QNy-D0-0t2">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="140"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRJ-Oc-bOH" customClass="InfoLabelAndIconView" customModule="WeatherApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="79" height="70"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QfY-Ce-e2F" customClass="InfoLabelAndIconView" customModule="WeatherApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="70" width="79" height="70"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gqU-HJ-NBU">
-                                                <rect key="frame" x="79" y="0.0" width="78.5" height="140"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="634-j8-5hJ" customClass="InfoLabelAndIconView" customModule="WeatherApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="70"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbc-OO-Bpw" customClass="InfoLabelAndIconView" customModule="WeatherApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="70" width="78.5" height="70"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="f5L-So-JQ2" secondAttribute="height" multiplier="1:1" id="8ju-jw-Tk6"/>
-                                            <constraint firstAttribute="height" constant="140" id="Js1-JW-bNf"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="8ju-jw-Tk6"/>
-                                            </mask>
-                                        </variation>
-                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="f5L-So-JQ2" firstAttribute="centerY" secondItem="5Qb-MP-Rrf" secondAttribute="centerY" id="3e4-H1-2Lv"/>
-                                    <constraint firstAttribute="trailing" secondItem="f5L-So-JQ2" secondAttribute="trailing" constant="20" id="B9u-Cc-CpD"/>
-                                    <constraint firstItem="f5L-So-JQ2" firstAttribute="width" secondItem="5Qb-MP-Rrf" secondAttribute="width" id="FrP-Xr-g5c"/>
-                                    <constraint firstItem="5Qb-MP-Rrf" firstAttribute="leading" secondItem="sw6-1N-eJJ" secondAttribute="leading" constant="20" id="LiJ-Wm-GWb"/>
-                                    <constraint firstAttribute="trailing" secondItem="B7G-ml-sKT" secondAttribute="trailing" constant="20" id="MFP-en-djf"/>
-                                    <constraint firstItem="5Qb-MP-Rrf" firstAttribute="top" secondItem="unB-Yy-lfS" secondAttribute="bottom" constant="50" id="Tjn-i8-o5Y"/>
-                                    <constraint firstAttribute="trailing" secondItem="unB-Yy-lfS" secondAttribute="trailing" constant="20" id="WFa-Oy-GhI"/>
-                                    <constraint firstItem="unB-Yy-lfS" firstAttribute="leading" secondItem="sw6-1N-eJJ" secondAttribute="leading" constant="20" id="iAK-Hh-CXy"/>
-                                    <constraint firstItem="f5L-So-JQ2" firstAttribute="leading" secondItem="5Qb-MP-Rrf" secondAttribute="trailing" constant="20" id="mPu-XI-YdK"/>
-                                    <constraint firstItem="unB-Yy-lfS" firstAttribute="top" secondItem="B7G-ml-sKT" secondAttribute="bottom" constant="20" id="o2e-mc-YJF"/>
-                                    <constraint firstItem="B7G-ml-sKT" firstAttribute="leading" secondItem="sw6-1N-eJJ" secondAttribute="leading" constant="20" id="pH8-Ru-Qjb"/>
-                                    <constraint firstItem="f5L-So-JQ2" firstAttribute="bottom" secondItem="5Qb-MP-Rrf" secondAttribute="bottom" id="rWt-Ny-cMr"/>
-                                    <constraint firstItem="f5L-So-JQ2" firstAttribute="top" secondItem="5Qb-MP-Rrf" secondAttribute="top" id="rlc-tV-mw4"/>
-                                    <constraint firstItem="B7G-ml-sKT" firstAttribute="top" secondItem="sw6-1N-eJJ" secondAttribute="top" constant="20" id="rwB-lv-2of"/>
+                                    <constraint firstItem="jD0-gc-slF" firstAttribute="centerX" secondItem="Ekn-Lh-bFf" secondAttribute="centerX" id="CBx-v8-VcE"/>
+                                    <constraint firstItem="jD0-gc-slF" firstAttribute="centerY" secondItem="Ekn-Lh-bFf" secondAttribute="centerY" id="S0c-JJ-fSo"/>
+                                    <constraint firstAttribute="width" secondItem="Ekn-Lh-bFf" secondAttribute="height" multiplier="1:1" id="xxK-K3-fNJ"/>
+                                    <constraint firstAttribute="width" constant="240" id="yrh-JD-qmv"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="rWt-Ny-cMr"/>
-                                        <exclude reference="rlc-tV-mw4"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -157,7 +82,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CFo-YE-TLQ" secondAttribute="bottom" id="GR5-NC-gGU"/>
                             <constraint firstItem="sw6-1N-eJJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="H87-s7-sFo"/>
                             <constraint firstItem="CFo-YE-TLQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IHo-xo-Rhj"/>
+                            <constraint firstItem="Ekn-Lh-bFf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jue-ut-ODd"/>
                             <constraint firstAttribute="trailing" secondItem="sw6-1N-eJJ" secondAttribute="trailing" id="P9g-Yf-PAa"/>
+                            <constraint firstItem="Ekn-Lh-bFf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZIZ-As-eeq"/>
                             <constraint firstItem="CFo-YE-TLQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f2p-Vo-Wkz"/>
                             <constraint firstAttribute="trailing" secondItem="CFo-YE-TLQ" secondAttribute="trailing" id="r6F-CK-ccP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sw6-1N-eJJ" secondAttribute="bottom" id="ynp-7F-tth"/>
@@ -165,17 +92,11 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="errorButton" destination="8av-xR-EaZ" id="6ny-yA-6cQ"/>
                         <outlet property="errorLabel" destination="zTf-3V-Iss" id="gAS-oO-ipp"/>
                         <outlet property="errorView" destination="CFo-YE-TLQ" id="naS-4q-S0R"/>
-                        <outlet property="locationLabel" destination="B7G-ml-sKT" id="uR5-d2-dyy"/>
-                        <outlet property="rainInfoLabelAndIconView" destination="Kbc-OO-Bpw" id="DdH-ht-Tjx"/>
-                        <outlet property="temperatureLabel" destination="unB-Yy-lfS" id="zRb-DV-6h5"/>
-                        <outlet property="temperatureMaxInfoLabelWithIconView" destination="XRJ-Oc-bOH" id="qcD-Vt-abk"/>
-                        <outlet property="temperatureMinInfoLabelAndIconView" destination="QfY-Ce-e2F" id="SHK-Lw-YCR"/>
-                        <outlet property="todaysWeatherView" destination="sw6-1N-eJJ" id="gAu-OK-q8S"/>
-                        <outlet property="tryAgainButton" destination="8av-xR-EaZ" id="qZe-jI-y7o"/>
-                        <outlet property="weatherImageView" destination="5Qb-MP-Rrf" id="pyr-NM-pky"/>
-                        <outlet property="windInfoLabelAndIconView" destination="634-j8-5hJ" id="gdD-H5-6ay"/>
+                        <outlet property="loadingView" destination="Ekn-Lh-bFf" id="6lk-WW-Wpx"/>
+                        <outlet property="todaysWeatherView" destination="sw6-1N-eJJ" id="l4S-sM-MEk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

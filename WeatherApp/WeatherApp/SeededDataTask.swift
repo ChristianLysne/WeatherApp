@@ -18,7 +18,7 @@ class SeededDataTask: NSURLSessionDataTask {
     }
     
     override func resume() {
-        if let json = NSProcessInfo.processInfo().environment[url.absoluteString] {
+        if let json = NSProcessInfo.processInfo().environment["UITesting-URL"] {
             let response = NSHTTPURLResponse(URL: url, statusCode: 200, HTTPVersion: nil, headerFields: nil)
             let data = json.nsutf8StringEncoding
             completion(data, response, nil)

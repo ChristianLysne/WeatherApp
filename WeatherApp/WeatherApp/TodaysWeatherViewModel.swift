@@ -19,10 +19,11 @@ struct TodaysWeatherViewModel {
     let temperatureMinInfoTextAndIcon: InfoTextAndIcon
     let windSpeedInfoTextAndIcon: InfoTextAndIcon
     let rainInfoTextAndIcon: InfoTextAndIcon
-    let weatherIconImageURL: NSURL?
+    let weatherIconImage: UIImage?
+    let windIconAngle: Float
     
     private let locationFontSize: CGFloat = 30
-    private let temperatureFontSize: CGFloat = 100
+    private let temperatureFontSize: CGFloat = 80
     private let infoFontSize: CGFloat = 18
     
     private let tempMaxImage = UIImage(named: "ArrowUp")!
@@ -66,7 +67,9 @@ struct TodaysWeatherViewModel {
                                                          postfix: " mm",
                                                          shrinkPostfix: true), rainImage)
         
-        weatherIconImageURL = EndpointUtil.imageURLFromWeatherIconName(todaysWeather.icon)
+        let iconName = todaysWeather.icon.stringByReplacingOccurrencesOfString("n", withString: "d")
+        weatherIconImage = UIImage(named: iconName)
+        windIconAngle = todaysWeather.windDegrees
     }
 }
 
