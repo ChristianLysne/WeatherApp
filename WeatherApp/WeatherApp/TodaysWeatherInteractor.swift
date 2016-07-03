@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 enum JSONError: String, ErrorType {
     case NoData = "Error: No data to parse"
@@ -26,7 +27,7 @@ struct TodaysWeatherInteractor {
 
 extension TodaysWeatherInteractor: TodaysWeatherViewControllerOutput {
     
-    func updateTodaysWeatherForLatitude(latitude: CGFloat, longitude: CGFloat) {
+    func updateTodaysWeatherForLatitude(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let urlString = EndpointUtil.weatherTodayEndpointWithLatitude(latitude, longitude: longitude)
         if let url = NSURL(string: urlString) {
             

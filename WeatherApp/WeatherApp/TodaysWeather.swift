@@ -10,6 +10,7 @@ import Foundation
 
 struct TodaysWeather {
     let id: Int
+    let locationName: String
     let icon: String
     let temp: Float
     let tempMin: Float
@@ -19,8 +20,18 @@ struct TodaysWeather {
     let rainInMM: Float?
     let time: NSDate
     
-    init(id: Int, icon: String, temp: Float, tempMin: Float, tempMax: Float, windSpeed: Float, windDegrees: Float, rainInMM: Float?, time: NSDate) {
+    init(id: Int,
+         locationName: String,
+         icon: String,
+         temp: Float,
+         tempMin: Float,
+         tempMax: Float,
+         windSpeed: Float,
+         windDegrees: Float,
+         rainInMM: Float?,
+         time: NSDate) {
         self.id = id
+        self.locationName = locationName
         self.icon = icon
         self.temp = temp
         self.tempMin = tempMin
@@ -34,6 +45,7 @@ struct TodaysWeather {
     init?(dictionary: [String: AnyObject]) {
         
         let id = dictionary["weather"]?[0]["id"] as? Int
+        let locationName = dictionary["name"] as? String
         let icon = dictionary["weather"]?[0]["icon"] as? String
         let temp = dictionary["main"]?["temp"] as? Float
         let tempMin = dictionary["main"]?["temp_min"] as? Float
@@ -44,11 +56,20 @@ struct TodaysWeather {
         let rainInMM = dictionary["rain"]?["3h"] as? Float
         let timeInUnix = dictionary["dt"] as? Double
         
-        if let id = id, icon = icon, temp = temp, tempMin = tempMin, tempMax = tempMax, windSpeed = windSpeed, windDegrees = windDegrees, timeInUnix = timeInUnix {
+        if let id = id,
+            locationName = locationName,
+            icon = icon,
+            temp = temp,
+            tempMin = tempMin,
+            tempMax = tempMax,
+            windSpeed = windSpeed,
+            windDegrees = windDegrees,
+            timeInUnix = timeInUnix {
             
             let time = NSDate(timeIntervalSince1970: timeInUnix)
             
             self.init(id: id,
+                      locationName: locationName,
                       icon: icon,
                       temp: temp,
                       tempMin: tempMin,

@@ -26,9 +26,13 @@ extension TodaysWeatherPresenter: TodaysWeatherInteractorOutput {
     }
     
     func failedUpdatingTodaysWeather() {
-        let attributes = [
-            NSForegroundColorAttributeName: UIColor.greenColor(),
-            NSFontAttributeName : UIFont.systemFontOfSize(22.0)]
+        
+        let style = NSMutableParagraphStyle()
+        style.alignment = .Center
+        
+        let attributes = [NSForegroundColorAttributeName: Constants.Colors.TodaysWeatherInfo,
+                          NSFontAttributeName : UIFont.systemFontOfSize(50.0),
+                          NSParagraphStyleAttributeName: style]
         let errorMessage = NSAttributedString(string: "Failed to update todays weather 😞", attributes: attributes)
         output.failedUpdatingTodaysWeatherWithErrorMessage(errorMessage)
     }

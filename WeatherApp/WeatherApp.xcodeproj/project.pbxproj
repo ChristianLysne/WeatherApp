@@ -40,6 +40,12 @@
 		AAC1BE651D282A00001D51BB /* TodaysWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE641D282A00001D51BB /* TodaysWeatherTests.swift */; };
 		AAC1BE681D2836F9001D51BB /* BayswaterExample.json in Resources */ = {isa = PBXBuildFile; fileRef = AAC1BE421D27F5F1001D51BB /* BayswaterExample.json */; };
 		AAC1BE691D28372C001D51BB /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE441D27F698001D51BB /* TestHelper.swift */; };
+		AAC1BE6B1D2856C3001D51BB /* InfoLabelAndIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE6A1D2856C3001D51BB /* InfoLabelAndIconView.swift */; };
+		AAC1BE6D1D2856F9001D51BB /* XibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE6C1D2856F9001D51BB /* XibLoadingView.swift */; };
+		AAC1BE6F1D28572D001D51BB /* InfoLabelAndIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC1BE6E1D28572D001D51BB /* InfoLabelAndIconView.xib */; };
+		AAC1BE721D2879DC001D51BB /* UIImageView+SetImageFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE711D2879DC001D51BB /* UIImageView+SetImageFromURL.swift */; };
+		AAC1BE751D2884C0001D51BB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE741D2884C0001D51BB /* LocationManager.swift */; };
+		AAC1BE771D28939C001D51BB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1BE761D28939C001D51BB /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +101,12 @@
 		AAC1BE591D281714001D51BB /* TodaysWeatherPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysWeatherPresenter.swift; sourceTree = "<group>"; };
 		AAC1BE5C1D2817D3001D51BB /* TodaysWeatherConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysWeatherConfigurator.swift; sourceTree = "<group>"; };
 		AAC1BE641D282A00001D51BB /* TodaysWeatherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysWeatherTests.swift; sourceTree = "<group>"; };
+		AAC1BE6A1D2856C3001D51BB /* InfoLabelAndIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLabelAndIconView.swift; sourceTree = "<group>"; };
+		AAC1BE6C1D2856F9001D51BB /* XibLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibLoadingView.swift; sourceTree = "<group>"; };
+		AAC1BE6E1D28572D001D51BB /* InfoLabelAndIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoLabelAndIconView.xib; sourceTree = "<group>"; };
+		AAC1BE711D2879DC001D51BB /* UIImageView+SetImageFromURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SetImageFromURL.swift"; sourceTree = "<group>"; };
+		AAC1BE741D2884C0001D51BB /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		AAC1BE761D28939C001D51BB /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +172,7 @@
 				AAC1BE2B1D27D9A0001D51BB /* Extensions */,
 				AAC1BE271D27D82F001D51BB /* Protocols */,
 				AAC1BE241D27D48C001D51BB /* Network */,
+				AAC1BE731D2884AE001D51BB /* Location */,
 				AAC1BE461D27F8A6001D51BB /* Utils */,
 			);
 			path = WeatherApp;
@@ -215,6 +228,9 @@
 		AAC1BE221D27D46A001D51BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAC1BE6C1D2856F9001D51BB /* XibLoadingView.swift */,
+				AAC1BE761D28939C001D51BB /* GradientView.swift */,
+				AAC1BE701D2857BB001D51BB /* InfoLabelAndIconView */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -260,6 +276,7 @@
 			children = (
 				AAC1BE2C1D27D9A7001D51BB /* Network */,
 				AAC1BE361D27E393001D51BB /* String+NSUTF8StringEncoding.swift */,
+				AAC1BE711D2879DC001D51BB /* UIImageView+SetImageFromURL.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -329,6 +346,23 @@
 				AAC1BE641D282A00001D51BB /* TodaysWeatherTests.swift */,
 			);
 			name = TodaysWeather;
+			sourceTree = "<group>";
+		};
+		AAC1BE701D2857BB001D51BB /* InfoLabelAndIconView */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE6A1D2856C3001D51BB /* InfoLabelAndIconView.swift */,
+				AAC1BE6E1D28572D001D51BB /* InfoLabelAndIconView.xib */,
+			);
+			name = InfoLabelAndIconView;
+			sourceTree = "<group>";
+		};
+		AAC1BE731D2884AE001D51BB /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1BE741D2884C0001D51BB /* LocationManager.swift */,
+			);
+			name = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAC1BE6F1D28572D001D51BB /* InfoLabelAndIconView.xib in Resources */,
 				AAC1BDFB1D27D2D2001D51BB /* LaunchScreen.storyboard in Resources */,
 				AAC1BDF81D27D2D2001D51BB /* Assets.xcassets in Resources */,
 				AAC1BDF61D27D2D2001D51BB /* Main.storyboard in Resources */,
@@ -471,17 +506,22 @@
 				AAC1BE351D27DDC7001D51BB /* NSURLSessionDataTask+SessionDataTask.swift in Sources */,
 				AAC1BE481D27F8BB001D51BB /* EndpointUtil.swift in Sources */,
 				AAC1BE391D27E7A8001D51BB /* NSHTTPURLResponse+StatusCode.swift in Sources */,
+				AAC1BE751D2884C0001D51BB /* LocationManager.swift in Sources */,
 				AAC1BE581D281705001D51BB /* TodaysWeatherInteractor.swift in Sources */,
 				AAC1BE5D1D2817D3001D51BB /* TodaysWeatherConfigurator.swift in Sources */,
 				AAC1BE541D280FFE001D51BB /* TodaysWeatherViewModel.swift in Sources */,
 				AAC1BE5A1D281714001D51BB /* TodaysWeatherPresenter.swift in Sources */,
 				AAC1BE3F1D27EECE001D51BB /* Config.swift in Sources */,
 				AAC1BE2A1D27D856001D51BB /* URLSession.swift in Sources */,
+				AAC1BE771D28939C001D51BB /* GradientView.swift in Sources */,
+				AAC1BE721D2879DC001D51BB /* UIImageView+SetImageFromURL.swift in Sources */,
 				AAC1BE411D27F2F4001D51BB /* Constants.swift in Sources */,
 				AAC1BE371D27E393001D51BB /* String+NSUTF8StringEncoding.swift in Sources */,
+				AAC1BE6D1D2856F9001D51BB /* XibLoadingView.swift in Sources */,
 				AAC1BE331D27DD9D001D51BB /* URLSessionDataTask.swift in Sources */,
 				AAC1BE261D27D49F001D51BB /* HTTPClient.swift in Sources */,
 				AAC1BE3D1D27EC9F001D51BB /* SeededURLSession.swift in Sources */,
+				AAC1BE6B1D2856C3001D51BB /* InfoLabelAndIconView.swift in Sources */,
 				AAC1BE2E1D27D9CC001D51BB /* NSURLSession+URLSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

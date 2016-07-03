@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import WeatherApp
 
 class TodaysWeatherTests: XCTestCase {
@@ -15,8 +16,8 @@ class TodaysWeatherTests: XCTestCase {
     let urlSession = MockURLSession()
     var viewController: TodaysWeatherViewController!
     
-    let latitude: CGFloat = 51.508369
-    let longitude: CGFloat = -0.176125
+    let latitude: CLLocationDegrees = 51.508369
+    let longitude: CLLocationDegrees = -0.176125
     
     override func setUp() {
         super.setUp()
@@ -28,7 +29,7 @@ class TodaysWeatherTests: XCTestCase {
         super.tearDown()
     }
     
-    func testViewControllerRequestsTodaysWeatherOnLoad() {
+    func testViewControllerRequestsTodaysWeather() {
         
         let output = MockTodaysWeatherViewControllerOutput()
         
@@ -40,6 +41,9 @@ class TodaysWeatherTests: XCTestCase {
         UIApplication.sharedApplication().keyWindow!.rootViewController = viewController
         
         XCTAssertNotNil(viewController.view)
+        
+        self.viewController.updatedLocation(CLLocation(latitude: latitude, longitude: longitude))
+        
         XCTAssertTrue(output.updateTodaysWeatherCalled)
     }
     
@@ -103,6 +107,7 @@ class TodaysWeatherTests: XCTestCase {
         let presenter = TodaysWeatherPresenter(output: output)
         
         let todaysWeather = TodaysWeather(id: 0,
+                                          locationName: "",
                                           icon: "",
                                           temp: 0,
                                           tempMin: 0,
@@ -130,7 +135,7 @@ class TodaysWeatherTests: XCTestCase {
     class MockTodaysWeatherViewControllerOutput: TodaysWeatherViewControllerOutput {
         private (set) var updateTodaysWeatherCalled = false
         
-        func updateTodaysWeatherForLatitude(latitude: CGFloat, longitude: CGFloat) {
+        func updateTodaysWeatherForLatitude(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
             updateTodaysWeatherCalled = true
         }
     }
