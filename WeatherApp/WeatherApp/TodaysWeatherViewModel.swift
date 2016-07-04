@@ -20,7 +20,7 @@ struct TodaysWeatherViewModel {
     let windSpeedInfoTextAndIcon: InfoTextAndIcon
     let rainInfoTextAndIcon: InfoTextAndIcon
     let weatherIconImage: UIImage?
-    let windIconAngle: Float
+    let windIconAngle: Float?
     
     private let locationFontSize: CGFloat = 30
     private let temperatureFontSize: CGFloat = 80

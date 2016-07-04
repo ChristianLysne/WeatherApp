@@ -16,7 +16,7 @@ struct TodaysWeather {
     let tempMin: Float
     let tempMax: Float
     let windSpeed: Float
-    let windDegrees: Float
+    let windDegrees: Float?
     let rainInMM: Float?
     let time: NSDate
     
@@ -27,7 +27,7 @@ struct TodaysWeather {
          tempMin: Float,
          tempMax: Float,
          windSpeed: Float,
-         windDegrees: Float,
+         windDegrees: Float?,
          rainInMM: Float?,
          time: NSDate) {
         self.id = id
@@ -69,7 +69,6 @@ struct TodaysWeather {
             tempMin = tempMin,
             tempMax = tempMax,
             windSpeed = windSpeed,
-            windDegrees = windDegrees,
             timeInUnix = timeInUnix {
             
             let time = NSDate(timeIntervalSince1970: timeInUnix)

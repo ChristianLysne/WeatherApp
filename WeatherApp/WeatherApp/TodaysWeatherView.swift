@@ -34,6 +34,8 @@ class TodaysWeatherView: XibLoadingView {
             self.weatherImageView.image = image
         }
         
-        self.windInfoLabelAndIconView.iconImageView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, CGFloat(viewModel.windIconAngle).degreesToRadians)
+        if let angle = viewModel.windIconAngle {
+            self.windInfoLabelAndIconView.iconImageView.transform = CGAffineTransformRotate(CGAffineTransformIdentity, CGFloat(angle).degreesToRadians)
+        }
     }
 }
