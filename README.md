@@ -15,6 +15,6 @@ Clean-Swift architecture is used in this project to provide good boundaries betw
 This project has mocked everything that have to do with networking code, using [Masilotti's approach](http://masilotti.com). This makes sure that unit tests and UI-tests can run without being dependent on network access or the speed of the network. The UI-tests runs with static responses and the unit tests use a mocked HTTP client to give the wanted response, status code and error for each test.
 
 #Future improvements
-Better transition between states (loading, error, display weather)
-Display forecasts for the next 7 days
-Option for Celsius, Fahrenheit or Kelvin
+Better transition between states (loading, error, display weather).
+Display forecasts for the next 7 days.
+Option for Celsius, Fahrenheit or Kelvin.
