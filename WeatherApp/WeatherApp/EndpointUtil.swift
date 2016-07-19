@@ -14,4 +14,8 @@ struct EndpointUtil {
     static func weatherTodayEndpointWithLatitude(latitude: CLLocationDegrees, longitude: CLLocationDegrees) -> String {
         return "\(Constants.Endpoints.WeatherToday)lat=\(latitude)&lon=\(longitude)&units=metric&APPID=\(Constants.APIKeys.OpenWeatherMap)"
     }
+    
+    static func weatherTodayEndpointWithName(name: String) -> String {
+        return "\(Constants.Endpoints.WeatherToday)q=\(name)&units=metric&APPID=\(Constants.APIKeys.OpenWeatherMap)"
+    }
 }

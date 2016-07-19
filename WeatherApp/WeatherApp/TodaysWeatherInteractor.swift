@@ -30,6 +30,7 @@ class TodaysWeatherInteractor {
     var output: TodaysWeatherInteractorOutput!
     var client = HTTPClient()
     var locationManager: Location = LocationManager()
+    var isPresentingWeatherForCurrentLocation = true
     
     func startTrackingLocation() {
         if UITesting() {
@@ -68,6 +69,8 @@ class TodaysWeatherInteractor {
 extension TodaysWeatherInteractor: TodaysWeatherViewControllerOutput {
     
     func updateTodaysWeather() {
+        locationManager.startTrackingLocation()
+        
         guard let location = locationManager.location() else {
             output.failedUpdatingTodaysWeatherWithError(.LocationNotFound)
             return
@@ -75,6 +78,21 @@ extension TodaysWeatherInteractor: TodaysWeatherViewControllerOutput {
         
         let urlString = EndpointUtil.weatherTodayEndpointWithLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude)
         if let url = NSURL(string: urlString) {
+            getTodaysWeatherFromURL(url)
+        }
+    }
+    
+    func updateWeatherForLocation(location: StoredLocation) {
+        locationManager.stopTrackingLocation()
+        
+        var urlString: String?
+        if let name = location.name {
+            urlString = EndpointUtil.weatherTodayEndpointWithName(name)
+        } else if let coordinate = location.coordinate {
+            urlString = EndpointUtil.weatherTodayEndpointWithLatitude(coordinate.latitude, longitude: coordinate.longitude)
+        }
+        
+        if let urlString = urlString, url = NSURL(string: urlString) {
             getTodaysWeatherFromURL(url)
         }
     }

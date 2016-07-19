@@ -20,6 +20,13 @@ class TodaysWeatherTests: XCTestCase {
         super.setUp()
         
         client = HTTPClient(urlSession: urlSession)
+        
+        let storyboard = UIStoryboard(name: "Main",
+                                      bundle: NSBundle.mainBundle())
+        self.viewController = storyboard.instantiateViewControllerWithIdentifier("TodaysWeatherViewController") as! TodaysWeatherViewController
+        UIApplication.sharedApplication().keyWindow!.rootViewController = viewController
+        
+        XCTAssertNotNil(viewController.view)
     }
     
     override func tearDown() {
@@ -30,6 +37,7 @@ class TodaysWeatherTests: XCTestCase {
         let output = MockTodaysWeatherInteractorOutput()
         
         let testHelper = TestHelper()
+        let location = MockLocation()
         let expectedData = testHelper.readJSONFromFile("BayswaterExample")
         
         urlSession.data = expectedData.nsutf8StringEncoding
@@ -37,12 +45,13 @@ class TodaysWeatherTests: XCTestCase {
         let interactor = TodaysWeatherInteractor()
         interactor.output = output
         interactor.client = client
-        interactor.locationManager = MockLocation()
+        interactor.locationManager = location
         
         interactor.updateTodaysWeather()
         
         XCTAssertTrue(output.presentTodaysWeatherCalled)
         XCTAssertFalse(output.failedUpdatingTodaysWeatherCalled)
+        XCTAssertTrue(location.startTrackingLocationCalled)
     }
     
     func testInteractorCallsFailedUpdatingTodaysWeatherIfDataIsEmpty() {
@@ -137,13 +146,42 @@ class TodaysWeatherTests: XCTestCase {
         XCTAssertTrue(output.failedUpdatingTodaysWeatherWithErrorMessageCalled)
     }
     
+    func testViewControllerOutputCallsUpdateWeatherForLocation() {
+        let output = MockTodaysWeatherViewControllerOutput()
+        
+        viewController.output = output
+        
+        XCTAssertFalse(output.updateWeatherForLocationCalled)
+        
+        viewController.locationChanged(StoredLocation(name: "name"))
+        
+        XCTAssertTrue(output.updateWeatherForLocationCalled)
+    }
+    
+    func testInteractorStopsTrackingLocationForManualLocation() {
+        let location = MockLocation()
+        
+        let interactor = TodaysWeatherInteractor()
+        interactor.locationManager = location
+        
+        interactor.updateWeatherForLocation(StoredLocation(name: "name"))
+        
+        XCTAssertTrue(location.stopTrackingLocationCalled)
+    }
+    
     //MARK: Mocks
     class MockTodaysWeatherViewControllerOutput: TodaysWeatherViewControllerOutput {
         private (set) var updateTodaysWeatherCalled = false
+        private (set) var updateWeatherForLocationCalled = false
         
         func updateTodaysWeather() {
             updateTodaysWeatherCalled = true
         }
+        
+        func updateWeatherForLocation(location: StoredLocation) {
+            updateWeatherForLocationCalled = true
+        }
+
     }
     
     class MockTodaysWeatherInteractorOutput: TodaysWeatherInteractorOutput {
@@ -174,6 +212,8 @@ class TodaysWeatherTests: XCTestCase {
     
     class MockLocation: Location {
         weak var locationDelegate: LocationDelegate?
+        private (set) var startTrackingLocationCalled = false
+        private (set) var stopTrackingLocationCalled = false
         
         func location() -> CLLocation? {
             let latitude: CLLocationDegrees = 51.508369
@@ -182,7 +222,11 @@ class TodaysWeatherTests: XCTestCase {
         }
         
         func startTrackingLocation() {
-            
+            startTrackingLocationCalled = true
+        }
+        
+        func stopTrackingLocation() {
+            stopTrackingLocationCalled = true
         }
     }
     

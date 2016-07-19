@@ -11,6 +11,7 @@ import CoreLocation
 
 protocol TodaysWeatherViewControllerOutput {
     func updateTodaysWeather()
+    func updateWeatherForLocation(location: StoredLocation)
 }
 
 enum UpdateWeatherState {
@@ -35,6 +36,12 @@ class TodaysWeatherViewController: UIViewController {
         
         updateViewWithState(.Loading)
         TodaysWeatherConfigurator.sharedInstance.configure(self, client: client)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -66,6 +73,13 @@ class TodaysWeatherViewController: UIViewController {
             self.todaysWeatherView.alpha = state == .DisplayWeather ? 1 : 0
         }
     }
+    
+    @IBAction func changeLocationButtonTapped(sender: AnyObject) {
+        
+        let locationsViewController = storyboard?.instantiateViewControllerWithIdentifier("LocationsViewController") as! LocationsViewController
+        locationsViewController.locationChangedDelegate = self
+        self.navigationController?.pushViewController(locationsViewController, animated: true)
+    }
 }
 
 extension TodaysWeatherViewController: TodaysWeatherPresenterOutput {
@@ -90,6 +104,12 @@ extension TodaysWeatherViewController: TodaysWeatherPresenterOutput {
                 self.errorButton.hidden = true
             }
         }
+    }
+}
+
+extension TodaysWeatherViewController: LocationChangedDelegate {
+    func locationChanged(location: StoredLocation) {
+        output.updateWeatherForLocation(location)
     }
 }
 

@@ -24,6 +24,7 @@ protocol Location {
     weak var locationDelegate: LocationDelegate? { get set }
     func location() -> CLLocation?
     func startTrackingLocation()
+    func stopTrackingLocation()
 }
 
 class LocationManager: NSObject {
@@ -55,6 +56,10 @@ extension LocationManager: Location {
         } else {
             locationDelegate?.couldNotFindLocationWithErrorCode(.PermissionDenied)
         }
+    }
+    
+    func stopTrackingLocation() {
+        manager.stopUpdatingLocation()
     }
 }
 
